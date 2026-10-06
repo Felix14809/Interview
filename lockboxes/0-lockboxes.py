@@ -1,7 +1,10 @@
 #!/usr/bin/python3
+"""This module returns True or False if all boxes can be opened"""
 
 
 def canUnlockAll(boxes):
+    """Represent the function that checks boxes"""
+
     keys = [0]
     unlocked = []
     prev_unlocked = -1
