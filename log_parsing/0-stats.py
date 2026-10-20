@@ -26,20 +26,21 @@ def main():
     }
     file_size = 0
     lines_read = 0
-    pattern = re.compile(r'^(\d{1,3}(?:.\d{1,3}){3}) - [([^]]+)] '
-                         r'"GET /projects/260 HTTP/1.1" (\d{3}) (\d+)$')
+    pattern = re.compile(r'(\d{1,3}(?:\.\d{1,3}){3}) - \[([^\]]+)\] '
+                         r'"GET /projects/260 HTTP/1\.1" (\d{3}) (\d+)')
 
     try:
         for line in sys.stdin:
-            if lines_read % 10 == 0:
-                print_status(status_codes, file_size)
+            
             line_matches = pattern.fullmatch(line.rstrip('\n'))
             if line_matches:
                 ip, date, status, size = line_matches.groups()
                 if int(status) in status_codes:
                     status_codes[int(status)] += 1
                 file_size += int(size)
-                lines_read += 1
+            lines_read += 1
+            if lines_read % 10 == 0:
+                print_status(status_codes, file_size)
     except KeyboardInterrupt:
         print_status(status_codes, file_size)
         time.sleep(1)
