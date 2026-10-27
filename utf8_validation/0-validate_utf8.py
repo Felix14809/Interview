@@ -1,4 +1,4 @@
-#!/bin/bash/python3
+#!/usr/bin/python3
 
 """This program check wether the input list of data is UTF-8 valid"""
 
