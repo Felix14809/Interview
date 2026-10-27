@@ -27,5 +27,4 @@ def validUTF8(data):
                 return False
     if continuations == 0:
         return True
-    else:
-        return None
+    return False
