@@ -10,7 +10,7 @@ def makeChange(coins, total):
     total_coins = 0
     scoins = sorted(coins, reverse=True)
     for coin in scoins:
-        if coin < total:
+        if coin <= total:
             total_coins += total // coin
             total = total % coin
         if total == 0:
