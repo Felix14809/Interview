@@ -8,6 +8,8 @@ needed to reach the total
 def makeChange(coins, total):
     if total < 0:
         return 0
+    if not coins:
+        return -1
     scoins = sorted(coins, reverse=True)
     total_coins = 0
     temp_total = 0
