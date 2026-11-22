@@ -6,23 +6,13 @@ needed to reach the total
 
 
 def makeChange(coins, total):
-    if total < 0:
+    if total <= 0:
         return 0
-    if not coins:
-        return -1
-    scoins = sorted(coins, reverse=True)
-    total_coins = 0
-    temp_total = 0
-    for coin in scoins:
-        temp = 0
-        temp_total = total
-        for coin in scoins:
-            if coin <= temp_total:
-                temp += temp_total // coin
-                temp_total = temp_total % coin
-        if total_coins == 0 or temp < total_coins:
-            total_coins = temp
-        scoins.pop(0)
-    if temp_total == 0:
-        return total_coins
-    return -1
+    dp = [total + 1] * (total + 1)
+    dp[0] = 0
+
+    for i in range(total + 1):
+        for coin in coins:
+            if i - coin >= 0:
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+    return dp[total] if dp[total] != (total + 1) else -1
