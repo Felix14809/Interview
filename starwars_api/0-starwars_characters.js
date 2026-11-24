@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const movie  = process.argv[2];
+const movie = process.argv[2];
 const request = require('request');
 
 request(`https://swapi-api.hbtn.io/api/films/${movie}`, (error, response, body) => {
@@ -8,24 +8,24 @@ request(`https://swapi-api.hbtn.io/api/films/${movie}`, (error, response, body) 
     console.log(error);
     return;
   }
-  
+
   const characters = JSON.parse(body).characters;
   const charNames = [];
-  let checked = 0
+  let checked = 0;
 
   characters.forEach((charUrl, i) => {
     request(charUrl, (error, response, body) => {
-         if (error) {
+      if (error) {
         console.log(error);
         return;
-        }
+      }
 
-        charNames[i] = JSON.parse(body).name;
-        checked++;
+      charNames[i] = JSON.parse(body).name;
+      checked++;
 
-        if (checked === characters.length) {
-            console.log(charNames.join('\n'));
-        }
+      if (checked === characters.length) {
+        console.log(charNames.join('\n'));
+      }
     });
   });
 });
