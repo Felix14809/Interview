@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """"
 Function that calculates the perimeter of an island in a grid
 """
