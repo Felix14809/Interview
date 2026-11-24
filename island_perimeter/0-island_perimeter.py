@@ -5,6 +5,7 @@ Function that calculates the perimeter of an island in a grid
 
 
 def island_perimeter(grid) -> int:
+    """this sends coordinates"""
     perimeter = 0
     for x, row in enumerate(grid):
         for y, col in enumerate(row):
@@ -14,6 +15,7 @@ def island_perimeter(grid) -> int:
 
 
 def check_cell(grid, row, col) -> int:
+    """this checls perimeter for every cell"""
     perimeter = 4
     height = len(grid)
     width = len(grid[row])
